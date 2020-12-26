@@ -1,0 +1,15 @@
+{
+  "short_name": "D WhatsApp",
+  "name": "Direct WhatsApp",
+  "icons": [
+    {
+      "src":"icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://demo.isystematic.com/drwhatsapp",
+  "background_color": "#000",
+  "Theme_color": "#536878",
+  "display": "standalone"
+}
