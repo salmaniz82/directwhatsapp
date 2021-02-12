@@ -51,6 +51,10 @@
 				display: none;
 			}
 
+			a#anchorButton{
+				text-decoration: none;
+			}			
+
 			a#anchorButton span {
 				color: #fff;
 				font-weight: 800;
@@ -190,9 +194,6 @@
 
 		if(inputvalue.length > 10)
 		{
-			/*
-			https://api.whatsapp.com/send?phone=923121006348
-			*/
 			var basePath = "https://api.whatsapp.com/send?phone=";
 			var targetNumber = inputvalue;
 			var targetPathUrl = basePath + targetNumber;
