@@ -49,7 +49,7 @@ inputTel.addEventListener("keyup", function (e) {
     /*
 			https://api.whatsapp.com/send?phone=923121006348
 			*/
-    var basePath = "https://api.whatsapp.com/send?phone=";
+    var basePath = "https://wa.me/";
     var targetNumber = inputvalue;
     var targetPathUrl = basePath + targetNumber;
     anchorButton.setAttribute("href", targetPathUrl);
