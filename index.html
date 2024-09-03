@@ -164,6 +164,13 @@
           anchorButton.style.display = "none";
         }
       });
+
+      // Listen for the input event
+      inputTel.addEventListener("input", function () {
+        let sanitizedValue = inputTel.value.replace(/[^0-9]/g, "");
+        // Update the input field value with the sanitized value
+        inputTel.value = sanitizedValue;
+      });
     </script>
   </body>
 </html>
