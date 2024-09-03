@@ -1,0 +1,111 @@
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #1ebea5;
+  color: #fff;
+}
+
+.bg-button-green {
+  background-color: #01e675;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
+}
+
+#anchorButton {
+  display: none;
+}
+
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.inputStyleFull {
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.t-xs {
+  font-size: 10px;
+}
+
+.t-sm {
+  font-size: 13px;
+}
+
+.t-mid {
+  font-size: 16px;
+}
+
+.t-lg {
+  font-size: 19px;
+}
+
+.t-xl {
+  font-size: 24px;
+}
+
+.dfx {
+  display: flex;
+}
+
+.dfx .textField {
+  flex: 1;
+}
+
+.dfx .countryCode {
+  width: 100px;
+}
+
+#installButton {
+  padding: 10px 20px;
+}
+
+#contactnumber {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  border-bottom: 1px solid #fff;
+  caret-color: #ffffff;
+  color: #fff;
+  font-size: 22px;
+}
+
+#contactnumber:focus + label.float-label,
+#contactnumber.pull-active + label.float-label {
+  transform: translateY(-30px);
+  font-size: 12px;
+}
+
+.floatable .field-wrap {
+  position: relative;
+}
+
+.floatable .field-wrap label.float-label {
+  position: absolute;
+  bottom: 8px;
+  font-size: 16px;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.75);
+  transition: all 0.3s ease-in-out;
+}
