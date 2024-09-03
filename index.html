@@ -99,7 +99,7 @@
     <div class="wrapper">
       <h1>Direct Whatsapp</h1>
 
-      <p class="t-md">Add to Home : Progress</p>
+      <p class="t-md">Progress : Service worker added</p>
 
       <button id="installButton" style="display: none">
         Add to Home Screen
@@ -131,6 +131,24 @@
         your contact list
       </p>
     </div>
+
+    <script type="text/javascript">
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log(
+                "Service Worker registered with scope:",
+                registration.scope
+              );
+            })
+            .catch((error) => {
+              console.log("Service Worker registration failed:", error);
+            });
+        });
+      }
+    </script>
 
     <script type="text/javascript">
       let deferredPrompt;
