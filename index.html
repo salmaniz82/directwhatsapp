@@ -93,13 +93,17 @@
       .dfx .countryCode {
         width: 100px;
       }
+
+      #installButton {
+        padding: 10px 20px;
+      }
     </style>
   </head>
   <body>
     <div class="wrapper">
       <h1>Direct Whatsapp</h1>
 
-      <p class="t-md">Progress : Service worker added</p>
+      <p class="t-md">Progress : Added Installation steps</p>
 
       <button id="installButton" style="display: none">
         Add to Home Screen
@@ -158,9 +162,28 @@
         e.preventDefault();
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
-        // Optionally, show the install button (make it visible)
+        // Show the install button (log for debugging)
+        console.log("Install prompt is ready");
         document.querySelector("#installButton").style.display = "block";
       });
+
+      document
+        .querySelector("#installButton")
+        .addEventListener("click", (e) => {
+          // Hide the install button
+          e.target.style.display = "none";
+          // Show the prompt
+          deferredPrompt.prompt();
+          // Wait for the user to respond to the prompt
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the A2HS prompt");
+            } else {
+              console.log("User dismissed the A2HS prompt");
+            }
+            deferredPrompt = null;
+          });
+        });
 
       var triggerButton = document.getElementById("triggerButton");
 
