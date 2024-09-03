@@ -17,7 +17,7 @@
     <div class="wrapper">
       <h1>Direct Whatsapp</h1>
 
-      <p class="t-md">Progress : Update push test</p>
+      <p class="t-md">Progress : UI Updated</p>
 
       <button id="installButton" style="display: none">
         Add to Home Screen
@@ -29,23 +29,32 @@
         method="post"
         class="floatable"
       >
-        <div class="field-wrap">
-          <input
-            class="inputStyleFull"
-            type="tel"
-            name="contactnumber"
-            id="contactnumber"
-            required
-          />
-          <label class="t-lg float-label">WhatsApp Number</label>
+        <div class="field-splitter">
+          <div class="field-wrap">
+            <input
+              class="inputStyleFull"
+              type="tel"
+              name="contactnumber"
+              id="contactnumber"
+              required
+            />
+            <label class="t-lg float-label">WhatsApp Number</label>
+          </div>
+
+          <div class="cta-split">
+            <div class="cta-btn-wrap">
+              <a
+                href=""
+                target="blank"
+                id="anchorButton"
+                class="bg-button-green"
+              >
+                <img src="icon.svg" />
+              </a>
+            </div>
+          </div>
         </div>
       </form>
-
-      <div>
-        <a href="" target="blank" id="anchorButton" class="bg-button-green">
-          <img src="icon.svg" />
-        </a>
-      </div>
 
       <p class="t-lg">
         Instant contact via Whatsapp when a person isn't in your contact list.
