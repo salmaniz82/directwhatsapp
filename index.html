@@ -11,15 +11,9 @@
 
     <meta name="robots" content="noindex, nofollow" />
 
-    <link
-      rel="shortcut icon"
-      href="https://directwhatsapp.net/drwhatsapp/icon.png"
-    />
+    <link rel="shortcut icon" href="https://directwhatsapp.net/icon.png" />
 
-    <link
-      rel="manifest"
-      href="https://directwhatsapp.net/drwhatsapp/manifest.json"
-    />
+    <link rel="manifest" href="https://directwhatsapp.net/manifest.json" />
 
     <style type="text/css">
       html {
@@ -107,6 +101,10 @@
 
       <p class="t-md">You can also add this shortcut for easy access</p>
 
+      <button id="installButton" style="display: none">
+        Add to Home Screen
+      </button>
+
       <h2 id="outputNumber"></h2>
 
       <form name="buildWhatsapplink" id="buildWhatsapplink" method="post">
@@ -135,6 +133,17 @@
     </div>
 
     <script type="text/javascript">
+      let deferredPrompt;
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Optionally, show the install button (make it visible)
+        document.querySelector("#installButton").style.display = "block";
+      });
+
       var triggerButton = document.getElementById("triggerButton");
 
       var inputTel = document.getElementById("contactnumber");
