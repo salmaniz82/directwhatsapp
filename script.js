@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("document is loaded");
-  let devProgress = "Index Added, Status Replaced Dynamic Indicator";
+  let devProgress = "Mobile Optimized";
 
   let deferredPrompt;
   const pageWrapper = document.querySelector(".wrapper");
