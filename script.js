@@ -1,69 +1,82 @@
-let deferredPrompt;
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("document is loaded");
+  let devProgress = "Index Added, Status Replaced Dynamic Indicator";
 
-window.addEventListener("beforeinstallprompt", (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Show the install button (log for debugging)
-  console.log("Install prompt is ready");
-  document.querySelector("#installButton").style.display = "block";
-});
+  let deferredPrompt;
+  const pageWrapper = document.querySelector(".wrapper");
+  const progressElemment = document.createElement("p");
+  progressElemment.classList.add("t-md");
+  progressElemment.id = "progress-status";
 
-document.querySelector("#installButton").addEventListener("click", (e) => {
-  // Hide the install button
-  e.target.style.display = "none";
-  // Show the prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === "accepted") {
-      console.log("User accepted the A2HS prompt");
-    } else {
-      console.log("User dismissed the A2HS prompt");
-    }
-    deferredPrompt = null;
+  progressElemment.textContent = `Progress : ${devProgress}`;
+
+  pageWrapper.appendChild(progressElemment);
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Show the install button (log for debugging)
+    console.log("Install prompt is ready");
+    document.querySelector("#installButton").style.display = "block";
   });
-});
 
-var triggerButton = document.getElementById("triggerButton");
+  document.querySelector("#installButton").addEventListener("click", (e) => {
+    // Hide the install button
+    e.target.style.display = "none";
+    // Show the prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the A2HS prompt");
+      } else {
+        console.log("User dismissed the A2HS prompt");
+      }
+      deferredPrompt = null;
+    });
+  });
 
-var inputTel = document.getElementById("contactnumber");
+  var triggerButton = document.getElementById("triggerButton");
 
-var anchorButton = document.getElementById("anchorButton");
+  var inputTel = document.getElementById("contactnumber");
 
-const updateFloatLabels = () => {
-  if (inputTel.value.trim() !== "") {
-    inputTel.classList.add("pull-active");
-  } else {
-    inputTel.classList.remove("pull-active");
-  }
-};
+  var anchorButton = document.getElementById("anchorButton");
 
-inputTel.addEventListener("keyup", function (e) {
-  e.target.value;
+  const updateFloatLabels = () => {
+    if (inputTel.value.trim() !== "") {
+      inputTel.classList.add("pull-active");
+    } else {
+      inputTel.classList.remove("pull-active");
+    }
+  };
 
-  var inputvalue = e.target.value;
+  inputTel.addEventListener("keyup", function (e) {
+    e.target.value;
 
-  if (inputvalue.length > 10) {
-    /*
-			https://api.whatsapp.com/send?phone=923121006348
-			*/
-    var basePath = "https://wa.me/";
-    var targetNumber = inputvalue;
-    var targetPathUrl = basePath + targetNumber;
-    anchorButton.setAttribute("href", targetPathUrl);
+    var inputvalue = e.target.value;
 
-    anchorButton.style.display = "inline-block";
-  } else {
-    anchorButton.style.display = "none";
-  }
-});
+    if (inputvalue.length > 10) {
+      /*
+        https://api.whatsapp.com/send?phone=923121006348
+        */
+      var basePath = "https://wa.me/";
+      var targetNumber = inputvalue;
+      var targetPathUrl = basePath + targetNumber;
+      anchorButton.setAttribute("href", targetPathUrl);
 
-// Listen for the input event
-inputTel.addEventListener("input", function () {
-  let sanitizedValue = inputTel.value.replace(/[^0-9]/g, "");
-  // Update the input field value with the sanitized value
-  inputTel.value = sanitizedValue;
-  updateFloatLabels();
+      anchorButton.style.display = "inline-block";
+    } else {
+      anchorButton.style.display = "none";
+    }
+  });
+
+  // Listen for the input event
+  inputTel.addEventListener("input", function () {
+    let sanitizedValue = inputTel.value.replace(/[^0-9]/g, "");
+    // Update the input field value with the sanitized value
+    inputTel.value = sanitizedValue;
+    updateFloatLabels();
+  });
 });
